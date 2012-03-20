@@ -1,11 +1,11 @@
 <?php 
 /*
 Plugin Name: Wizpert Button to Share Your Expertise
-Plugin URI: http://beta.wizpert.com/beta/3ba42
+Plugin URI: http://wizpert.com/?beta_key=3ba42
 Description: Call Me on Wizpert.&nbsp; To get started: 1) Click the Activate link to the left of this description, 2) Register your email on the <a href='options-general.php?page=wizpert-button-to-share-your-expertise'>Settings</a> page, 3) Complete your free profile on Wizpert, if you don't have one yet, and 4) Return to the <a href='options-general.php?page=wizpert-button-to-share-your-expertise'>Settings</a> page, to customize the placement of your button. 
-Version: 1.0
+Version: 1.1
 Author: Wizpert
-Author URI: http://beta.wizpert.com/beta/3ba42
+Author URI: http://wizpert.com/?beta_key=3ba42
 License: GPL
 */
 
@@ -18,6 +18,7 @@ add_filter('plugin_action_links', 'wizpert_settings_link', 10, 2 );
 add_action('plugins_loaded', 'wizpert_button_init');
 add_shortcode('Wizpert','wizpert_button_iframe');
 add_shortcode('wizpert','wizpert_button_iframe');
+add_shortcode('wizpert_small','wizpert_button_small_iframe');
 
 function wizpert_button_install() {
 add_option('wizpert_button_data', 'beta_key=3ba42', '', 'yes');
@@ -43,7 +44,11 @@ delete_option('wizpert_button_pagenum');
 }
 
 function wizpert_button_iframe() {
-	return "<iframe width='180' height='65' src='http://beta.wizpert.com/wizapi/widget?" . get_option( "wizpert_button_data",'') . "' frameborder='0' scrolling='no' allowfullscreen></iframe>";
+	return "<iframe width='180' height='260' src='http://wizpert.com/wizapi/widget?" . get_option( "wizpert_button_data",'') . "&size=standard' frameborder='0' scrolling='no' allowfullscreen></iframe>";
+}
+
+function wizpert_button_small_iframe() {
+	return "<iframe width='180' height='65' src='http://wizpert.com/wizapi/widget?" . get_option( "wizpert_button_data",'') . "' frameborder='0' scrolling='no' allowfullscreen></iframe>";
 }
 
 function wizpert_button_create() {
@@ -53,7 +58,7 @@ function wizpert_button_create() {
 function wizpert_post_display($content) {    
     if ( is_single() and get_option("wizpert_button_bottompost",'') == 'checked') {
 		if (get_option('wizpert_button_pagenum') == '' or get_the_ID() <> get_option('wizpert_button_pagenum')) {  
-        	return $content . "[Wizpert]";  
+        	return $content . "[wizpert_small]";  
     	} 
 		else {  
         	return $content;  
@@ -67,7 +72,7 @@ function wizpert_post_display($content) {
 function wizpert_page_display($content) {    
     if ( is_page() and get_option("wizpert_button_bottompage",'') == 'checked') {
 		if (get_option('wizpert_button_pagenum') == '' or get_the_ID() <> get_option('wizpert_button_pagenum')) {  
-        	return $content . "[Wizpert]";  
+        	return $content . "[wizpert_small]";  
     	} 
 		else {  
         	return $content;  
@@ -125,7 +130,7 @@ function wizpert_process_email($active) {
 	else {
 		$sendemail = "";
 	}
-	extract(wizpert_api_call("http://beta.wizpert.com/wizapi/getbutton?email=" .
+	extract(wizpert_api_call("http://wizpert.com/wizapi/getbutton?email=" .
                         urlencode(get_option('wizpert_button_email')).
                         "&usage=wordpress".$sendemail));
     if (!$success) {
@@ -178,10 +183,10 @@ function wizpert_button_settings() {
 			$message = '<b>Email Sent</b>&nbsp; Please check your email, and follow the confirmation link to create a profile.';
 			break;
 			case 'complete_registration':
-			$message = '<b>Profile Incomplete</b>&nbsp; Please click <a href="http://beta.wizpert.com/expert_login" target="_blank">here</a> to complete your profile on Wizpert.';
+			$message = '<b>Profile Incomplete</b>&nbsp; Please click <a href="http://wizpert.com/expert_login" target="_blank">here</a> to complete your profile on Wizpert.';
 			break;
 			case 'select_expertise':
-			$message = '<b>No Topic Selected</b>&nbsp; Please click <a href="http://beta.wizpert.com/dashboard_subjects" target="_blank">here</a> to select a topic for your button.';
+			$message = '<b>No Topic Selected</b>&nbsp; Please click <a href="http://wizpert.com/dashboard_subjects" target="_blank">here</a> to select a topic for your button.';
 			break;
 			case 'registered':
 			$message = '<b>Linked to Profile</b>';
@@ -193,10 +198,10 @@ function wizpert_button_settings() {
 		wizpert_process_email("");
 		switch (get_option('wizpert_button_result')) {
 			case 'complete_registration':
-			$message = '<b>Profile Incomplete</b>&nbsp; Please click <a href="http://beta.wizpert.com/expert_login" target="_blank">here</a> to complete your profile on Wizpert.';
+			$message = '<b>Profile Incomplete</b>&nbsp; Please click <a href="http://wizpert.com/expert_login" target="_blank">here</a> to complete your profile on Wizpert.';
 			break;
 			case 'select_expertise':
-			$message = '<b>No Topic Selected</b>&nbsp; Please click <a href="http://beta.wizpert.com/dashboard_subjects" target="_blank">here</a> to select a topic for your button.';
+			$message = '<b>No Topic Selected</b>&nbsp; Please click <a href="http://wizpert.com/dashboard_subjects" target="_blank">here</a> to select a topic for your button.';
 			break;
 		}
 	 }

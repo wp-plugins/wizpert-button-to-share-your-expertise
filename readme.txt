@@ -1,10 +1,10 @@
 === Wizpert Button to Share Your Expertise ===
 Contributors: dheedene
 Donate link:
-Tags: advise, ask me, available, blog, call me, click to call, coach, contact, counsel, expert, exercise advice, fans, get paid, health advice, help, language practice, life coaching, live chat, make money, monetize, nutrition advice, online meeting, parenting advice, phone, real-time, relationship advice, share knowledge, skype, talk, teach, tutor, wizpert, work advice
+Tags: advise, ask me, available, blog, call me, click to call, coach, contact, counsel, expert, exercise advice, fans, get paid, health advice, help, language practice, life coaching, live chat, make money, monetize, nutrition advice, online meeting, parenting advice, phone, real-time, relationship advice, share knowledge, skype, talk, teach, tutor, wizpert, work advice, health
 Requires at least: 2.1.0
 Tested up to: 3.3.1
-Stable tag: 1.0
+Stable tag: 1.1
 
 Share your knowledge with your fans, and make some money! - place a Wizpert button on your blog.
 
@@ -21,7 +21,7 @@ Place a Wizpert Button on your blog to
 <br><br>
 Join the Wizpert family by creating your free profile, and share your expertise with all users of the Wizpert platform.  We will match users to you based on your profile, anytime you are available for calls. 
 <br><br>
-Check out our <a href='http://beta.wizpert.com/beta/3ba42' target='_blank'>website</a>, or contact us at <a href='mailto:info@wizpert.com?subject=wordpress'>info@wizpert.com</a>.
+Check out our <a href='http://wizpert.com/?beta_key=3ba42' target='_blank'>website</a>, or contact us at <a href='mailto:info@wizpert.com?subject=wordpress'>info@wizpert.com</a>.
 
 == Installation ==
 
@@ -73,13 +73,22 @@ We require our wizperts to first get sufficient user ratings before charging a f
 
 = Where can I find more information? =
 
-Check out our <a href='http://beta.wizpert.com/faqs?beta_key=3ba42' target='_blank'>FAQs</a> on the Wizpert site, or contact us at <a href='mailto:info@wizpert.com?subject=wordpress'>info@wizpert.com</a>.
+Check out our <a href='http://wizpert.com/faqs?beta_key=3ba42' target='_blank'>FAQs</a> on the Wizpert site, or contact us at <a href='mailto:info@wizpert.com?subject=wordpress'>info@wizpert.com</a>.
 
 == Screenshots ==
 
 
 == Changelog ==
 
+= 1.1 =
+* Updated the button design and functionality.
+
+= 1.0 =
+* First version.
 
 == Upgrade Notice ==
+
+= 1.1 =
+Please upgrade to use the new/improved buttons.
+
 
